@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Estudiantes {
-    public  String nombre;
-    public  int edad;
-    public  double notaFinal;
+    public String nombre;
+    public int edad;
+    public double notaFinal;
 
     public Estudiantes(String nombre, int edad, double notaFinal) {
         this.nombre = nombre;
@@ -82,7 +82,7 @@ public class Estudiantes {
         return listaEstudiantes;
     }
 
-    public static Estudiantes[] crearListaEstudiantes() {
+    /*public static Estudiantes[] crearListaEstudiantes() {
         Estudiantes[] estudiantes = new Estudiantes[8];
         
         estudiantes[0] = new Estudiantes("Juan Pérez", 20, 6.5);
@@ -94,6 +94,5 @@ public class Estudiantes {
         estudiantes[6] = new Estudiantes("Diego Fernández", 21, 3.7);
         estudiantes[7] = new Estudiantes("Sofia Gómez", 19, 5.9);
         
-        return estudiantes;
+        return estudiantes;*/
     }
-}

@@ -46,7 +46,7 @@ public class App {
         while (opcion != 3) {
             System.out.println("\n--- MENÚ ---");
             System.out.println("1. Mostrar Estudiantes");
-            System.out.println("2. Mostrar estudiantes aprobados (Nota ≥ 6.0)");
+            System.out.println("2. Mostrar estudiantes aprobados (Nota mayor a 6.0)");
             System.out.println("3. Salir de la app");
             System.out.print("Selecciona una opción: ");
             
