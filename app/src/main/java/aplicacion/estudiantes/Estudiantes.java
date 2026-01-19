@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Estudiantes {
-    public String nombre;
-    public int edad;
-    public double notaFinal;
+    private String nombre;
+    private int edad;
+    private double notaFinal;
 
     public Estudiantes(String nombre, int edad, double notaFinal) {
         this.nombre = nombre;
@@ -42,15 +42,21 @@ public class Estudiantes {
         Scanner scanner = new Scanner(System.in);
         
         int cantidad = 0;
-        do {
+        while (true) {
             System.out.print("¿Cuántos estudiantes deseas registrar? ");
-            cantidad = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer del scanner
-            
-            if (cantidad < 1) {
-                System.out.println("La cantidad debe ser mayor a 0. Intenta de nuevo.");
+            if (scanner.hasNextInt()) {
+                cantidad = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el buffer del scanner
+                if (cantidad >= 1) {
+                    break;
+                } else {
+                    System.out.println("La cantidad debe ser mayor a 0. Intenta de nuevo.");
+                }
+            } else {
+                System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
+                scanner.nextLine(); // Limpiar la entrada inválida
             }
-        } while (cantidad < 1);
+        }
         
         ArrayList<Estudiantes> listaEstudiantes = new ArrayList<>();
         
@@ -59,26 +65,50 @@ public class Estudiantes {
             System.out.println("\nEstudiante " + (i + 1) + ":");
             
             System.out.print("Nombre: ");
-            String nombre = scanner.nextLine();
+            String nombre = scanner.nextLine().trim();
+            while (nombre.isEmpty()) {
+                System.out.print("El nombre no puede estar vacío. Nombre: ");
+                nombre = scanner.nextLine().trim();
+            }
             
             int edad = 0;
-            do {
+            while (true) {
                 System.out.print("Edad: ");
-                edad = scanner.nextInt();
-                scanner.nextLine(); // Limpiar el buffer del scanner después de nextInt()
-                
-                if (edad <= 15) {
-                    System.out.println("La edad debe ser mayor a 15. Intenta de nuevo.");
+                if (scanner.hasNextInt()) {
+                    edad = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer del scanner después de nextInt()
+                    if (edad > 15) {
+                        break;
+                    } else {
+                        System.out.println("La edad debe ser mayor a 15. Intenta de nuevo.");
+                    }
+                } else {
+                    System.out.println("Entrada inválida. Por favor, ingresa un número entero para la edad.");
+                    scanner.nextLine(); // Limpiar la entrada inválida
                 }
-            } while (edad <= 15);
+            }
             
-            System.out.print("Nota Final: ");
-            double notaFinal = scanner.nextDouble();
-            scanner.nextLine(); // Limpiar el buffer del scanner después de nextDouble()
+            double notaFinal = 0.0;
+            while (true) {
+                System.out.print("Nota Final: ");
+                if (scanner.hasNextDouble()) {
+                    notaFinal = scanner.nextDouble();
+                    scanner.nextLine(); // Limpiar el buffer del scanner después de nextDouble()
+                    if (notaFinal >= 0.0 && notaFinal <= 10.0) {
+                        break;
+                    } else {
+                        System.out.println("La nota debe estar entre 0.0 y 10.0. Intenta de nuevo.");
+                    }
+                } else {
+                    System.out.println("Entrada inválida. Por favor, ingresa un número decimal para la nota.");
+                    scanner.nextLine(); // Limpiar la entrada inválida
+                }
+            }
             
             listaEstudiantes.add(new Estudiantes(nombre, edad, notaFinal));
         }
         
+        scanner.close();
         return listaEstudiantes;
     }
 

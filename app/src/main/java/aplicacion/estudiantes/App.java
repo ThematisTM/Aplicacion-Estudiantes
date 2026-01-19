@@ -50,20 +50,26 @@ public class App {
             System.out.println("3. Salir de la app");
             System.out.print("Selecciona una opción: ");
             
-            opcion = scanner.nextInt();
-            
-            switch (opcion) {
-                case 1:
-                    mostrarEstudiantes(listaEstudiantes);
-                    break;
-                case 2:
-                    mostrarEstudiantesAprobados(listaEstudiantes);
-                    break;
-                case 3:
-                    System.out.println("\n¡Hasta luego!");
-                    break;
-                default:
-                    System.out.println("Opción inválida, intenta de nuevo");
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el buffer
+                
+                switch (opcion) {
+                    case 1:
+                        mostrarEstudiantes(listaEstudiantes);
+                        break;
+                    case 2:
+                        mostrarEstudiantesAprobados(listaEstudiantes);
+                        break;
+                    case 3:
+                        System.out.println("\n¡Hasta luego!");
+                        break;
+                    default:
+                        System.out.println("Opción inválida, intenta de nuevo");
+                }
+            } else {
+                System.out.println("Entrada inválida. Por favor, ingresa un número entero para la opción.");
+                scanner.nextLine(); // Limpiar la entrada inválida
             }
         }
         scanner.close();
