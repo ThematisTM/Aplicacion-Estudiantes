@@ -94,10 +94,10 @@ public class Estudiantes {
                 if (scanner.hasNextDouble()) {
                     notaFinal = scanner.nextDouble();
                     scanner.nextLine(); // Limpiar el buffer del scanner después de nextDouble()
-                    if (notaFinal >= 0.0 && notaFinal <= 10.0) {
+                    if (notaFinal >= 0.0 && notaFinal <= 7.0) {
                         break;
                     } else {
-                        System.out.println("La nota debe estar entre 0.0 y 10.0. Intenta de nuevo.");
+                        System.out.println("La nota debe estar entre 0.0 y 7.0. Intenta de nuevo.");
                     }
                 } else {
                     System.out.println("Entrada inválida. Por favor, ingresa un número decimal para la nota.");
