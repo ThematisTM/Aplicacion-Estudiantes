@@ -108,7 +108,6 @@ public class Estudiantes {
             listaEstudiantes.add(new Estudiantes(nombre, edad, notaFinal));
         }
         
-        scanner.close();
         return listaEstudiantes;
     }
 
